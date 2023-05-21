@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace绑定/映射的对应接口的全路径名 ，
+    使得我们可以利用接口来调用映射的SQL语句，注意sql语句的id必须和接口的方法名一致 -->
+        <mapper namespace="com.itheima.mapper.CourseMapper">
+        <!--
+     select:查询的statement(声明)，用来编写查询语句
+     id：语句的唯一标识
+     resultType：配置返回的结果集类型
+     parameterTyper:传递的参数类型，可以省略
+-->
+    <!--目标1：查询id=2的课程信息-->
+<select id="findCourseById"
+        parameterType="Integer"
+        resultMap="CourseMap">
+    select *,c_course.id cid,s_school.id shoolid
+    from c_course,s_school
+    where c_course.sid=s_school.id AND c_course.id=#{id}
+</select>
+            <resultMap type="Course" id="CourseMap">   <!-- type=Course，因为在mybatis-config文件设置了别名 -->
+                <id property="id" column="cid"/>
+                <result property="name" column="name"/>
+                <result property="hours" column="hours"/>
+                <association property="school" javaType="School">
+                    <!--一对一查询，javaType：别名映射之后 实体名；property:Course实体中关联的School实体的school属性-->
+                    <id column="sid" property="id"/>
+                    <result column="schoolname" property="schoolname"/>
+                </association>
+            </resultMap>
+
+<!--目标2：查询出所有计算机学院开设的课程信息-->
+    <select id="findCourseBySchool"
+            parameterType="String"
+            resultMap="CourseMap2">
+        select *,c_course.id cid,s_school.id shoolid
+        from c_course,s_school
+        where c_course.sid=s_school.id AND schoolname=#{schoolname}
+    </select>
+    <resultMap type="Course" id="CourseMap2">   <!-- typer:实体-->
+        <id property="id" column="cid"/>
+        <result property="name" column="name"/>
+        <result property="hours" column="hours"/>
+        <association property="school" javaType="School">
+            <id column="sid" property="id"/>
+            <result column="schoolname" property="schoolname"/>
+        </association>
+    </resultMap>
+    
+<!--将id=4这门课程的课时数修改未32+8=40-->
+    <update id="updateCourse" parameterType="Integer">
+        update c_course
+        set hours=hours+8
+        where id=#{id}
+    </update>
+    <!--方法二：直接修改-->
+    <update id="updateById">
+        update c_course
+        set hours=40
+        where id=2
+    </update>
+
+   <!--目标4：插⼊⼀条新的课程记录： names=”⼤数据存储“，hours=32，schools =1；-->
+<insert id="insertCourse" >
+INSERT INTO c_course(name,hours, sid)
+VALUES ('大数据存储', 32, 1)
+    </insert>
+    <!--或：VALUES ( #{name}, #{hours}, #{sid})-->
+
+
+    <!--目标5： 输出所有的学院开设的课程信息-->
+    <select id="findAllCourse"
+            parameterType="java.util.Arrays"
+            resultMap="findCourseBySchool">
+        select *
+        from c_course,s_school
+        where c_course.sid=s_school.id AND s_school.id in
+        <foreach collection="array" item="sid" open="(" separator="," close=")">
+            #{sid}
+        </foreach>
+    </select>
+    <resultMap id="findCourseBySchool" type="Course">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="hours" column="hours"/>
+        <association property="school" javaType="School">
+            <id column="sid" property="id"/>
+            <result column="schoolname" property="schoolname"/>
+        </association>
+    </resultMap>
+</mapper>

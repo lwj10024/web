@@ -1,0 +1,4 @@
+org\example\Main.class
+com\itheima\pojo\School.class
+com\itheima\pojo\Course.class
+com\itheima\utils\MyBatisUtils.class

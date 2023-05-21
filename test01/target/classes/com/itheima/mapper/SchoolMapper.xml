@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace等于StudentMapper的全类限定名，
+    使得我们可以利用接口来调用映射的SQL语句，注意sql语句的id必须和接口的方法名一致 -->
+        <mapper namespace="com.itheima.mapper.SchoolMapper">
+        <!--
+     select:查询的statement(声明)，用来编写查询语句
+     id：语句的唯一标识
+     resultType：配置返回的结果集类型
+     parameterTyper:传递的参数类型，可以省略
+-->
+<select id="findSchoolWithCourseById"
+        resultMap="findSchoolWithCourseByIdResult"
+        parameterType="java.util.Arrays">
+    select *,c.id cid
+    from c_course c,s_school s
+    where s.id = c.sid and s.id in
+    <foreach collection="array" item="sid" open="(" separator="," close=")">
+          #{sid}</foreach>
+     </select>
+<resultMap type="School" id="findSchoolWithCourseByIdResult">   <!-- 为什么可以用School，因为在mybatis-config文件设置了别名 -->
+<id property="id" column="sid"/>
+<result column="schoolname" property="schoolname"></result>
+        <collection property="courseList" ofType="course">
+            <id column="cid" property="id"></id>
+            <result property="name" column="name"/>
+            <result property="hours" column="hours"/>
+        </collection>
+</resultMap>
+</mapper>
