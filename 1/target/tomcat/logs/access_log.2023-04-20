@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:48 +0800] "GET / HTTP/1.1" 200 2156 http-bio-9092-exec-2 1326
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:49 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-9092-exec-3 13
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:50 +0800] "GET /course/allCourse HTTP/1.1" 200 4500 http-bio-9092-exec-4 278
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:50 +0800] "GET /course/showPic/os.jpg HTTP/1.1" 200 19484 http-bio-9092-exec-6 6
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:50 +0800] "GET /course/showPic/c.jpg HTTP/1.1" 200 76884 http-bio-9092-exec-5 3
+0:0:0:0:0:0:0:1 - - [20/Apr/2023:19:34:50 +0800] "GET /course/showPic/english.jpg HTTP/1.1" 200 123005 http-bio-9092-exec-9 4

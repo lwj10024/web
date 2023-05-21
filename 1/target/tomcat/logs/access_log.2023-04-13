@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [13/Apr/2023:21:09:52 +0800] "GET / HTTP/1.1" 200 487 http-bio-9090-exec-2 119
+0:0:0:0:0:0:0:1 - - [13/Apr/2023:21:09:52 +0800] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-9090-exec-3 9
+0:0:0:0:0:0:0:1 - - [13/Apr/2023:21:09:55 +0800] "GET /course/allCourse HTTP/1.1" 200 4852 http-bio-9090-exec-5 332
+0:0:0:0:0:0:0:1 - - [13/Apr/2023:21:10:22 +0800] "GET /course/queryCourse?curPage=2&name= HTTP/1.1" 200 3564 http-bio-9090-exec-8 46
