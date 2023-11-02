@@ -1,0 +1,8 @@
+E:\vsLife\dxfparser\lhy\gui\main.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\main.obj
+E:\vsLife\dxfparser\lhy\gui\src\dxflib\lsDxf.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsDxf.obj
+E:\vsLife\dxfparser\lhy\gui\src\entity\lsArc.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsArc.obj
+E:\vsLife\dxfparser\lhy\gui\src\entity\lsBoundbox.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsBoundbox.obj
+E:\vsLife\dxfparser\lhy\gui\src\entity\lsCircle.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsCircle.obj
+E:\vsLife\dxfparser\lhy\gui\src\entity\lsEntity.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsEntity.obj
+E:\vsLife\dxfparser\lhy\gui\src\entity\lsLine.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsLine.obj
+E:\vsLife\dxfparser\lhy\gui\src\lsCanvas.cpp;E:\vsLife\dxfparser\lhy\gui\x64\Debug\lsCanvas.obj
